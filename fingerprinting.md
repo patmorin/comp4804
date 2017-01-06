@@ -74,3 +74,88 @@ To summarize, we have an algorithm (*Freivald's Algorithm*) that runs in $\Theta
 
 * always return `true` if $A\times B=C$;
 * return `false` with probability at least $1-1/k$ if $A\times B\neq C$
+
+## Rabin-Karp String Matching
+
+Here are my [original hand-written notes](notes/strings/) on this topic.
+
+Suppose we have a little string $p=p_0,\ldots,p_{m-1}$ and a big body of text $t=t_0,\ldots,t_{n-1}$.  Here $m<n$ and we want to look for occurrences of $p$ in $t$.
+More precisely,
+
+* A *match* is an index $i$ such that $p_j = t_{i+j}$ for all $j\in\{0,\ldots,m-1\}$
+
+We want to find all matches.  The obvious algorithm looks like this:
+
+    :::pseudocode
+    for i = 0 to n-m
+        j = 0
+        while j < m and p[j] = t[i+j]
+            j = j + 1
+        if j == m then output i
+
+This algorithm finds all matches and runs in $O(nm)$ time, and on some instances it runs in $\Omega(nm)$ time, even when there are no matches to output. This happens, for example, when $p=aaaa\ldots aab$ and $t=aaaa\ldots a$.
+
+Now we can think of $p$ and $t$ as sequences of integers in the range ${0,\ldots,k-1}$ where $k$ is the alphabet size.  We can compress $p$ down to think of $p$ as a a single integer
+\[
+    I(p) = \sum_{j=0}^{m-1} k^{m-j-1}\times p_j
+\]
+Just think of $p$ as a base-$k$ representation of some integer. For example if our alphabet is $0,1,2,3,4,5,6,7,8,9$ and $p="10393"$, then $I(p)=10393$.  We can compute $I(p)$ in $O(m)$ time:
+
+    :::pseudocode
+    x = 1
+    I = 0
+    for j = 0 to m-1
+        I += p[m-j-1]*x
+        x = x*k
+
+We can restate our problem as that of trying to find the indices $i$ where
+\[
+   I(p) = I(t_i\ldots,t_{i+m-1}) \enspace .
+\]
+
+The nice thing about this is that we only need to compute $I(p)$ once and we have a nice relation between consecutive strings in $t$:
+\[
+   I(t_{i+1},\ldots,t_{i+m}) = kI(t_i,\ldots,t_{m-1}) - t_{i}k^m + t_{i+m}
+\]
+
+    :::pseudocode
+    Ip = I(p)
+    Ir = I(t[0...m-1])
+    km = k to the power m
+    for i = 0 to n-m
+        if Ip == Ir then output i
+        Ir = k*Ir - t[i]*km + t[i+m]
+
+Great! This looks like a linear time algorithm.  There's only one problem; the values of Ip and Ir are *huge*.  We can't store them in a single machine register, so those multiplications and additions each take (at least) $\Omega(m)$ time.  We need to make things smaller still.
+
+### Number Theory to the Rescue
+
+To do this, we're going to pick a prime number $P$ and do all our arithmetic modulo $P$, so all the numbers we deal with are in the range ${0,\ldots,P-1}$.  If $P$ is small enough to fit into a register, then the algorithm definitely runs in $O(n)$ time, but is it correct?  Not always: just because
+\[
+   I(p)\bmod P = I(t_i,\ldots,t_{i+m-1}) \bmod P
+\]
+doesn't mean $I(P)=I(t_i,\ldots,t_{i+m-1})
+
+We're going to make sure that it's *probably works most of the time*.  The statement
+\[
+   x \bmod P = y \bmod P
+\]
+really means $x=aP + b$ and $y=a'P + b$, for some integers $a$, $a'$ and $b$.  This means
+\[
+      x-y = (a-a')P
+\]
+So we have to worry about the case where $x-y$ is a multiple of $P$.  This only happens when $P$ is a prime factor of $|x-y|$.  How many prime factors does $x-y$ have?  Each prime factor is at least $2$, so if $|x-y|$ has $q$ prime factors, then $|x-y| \ge 2^q$.  This means $q \le \log_2|x-y|$.  So $|x-y|$ has at most $\log_2|x-y|$ prime factors.
+
+Now our $x$'s and $y$'s are integers in the range $\{0,\ldots,k^m\}$, so there are only $m\log_2 k$ prime factors we have to worry about.  Now we need a result from number theory:
+
+**Theorem:** The number of primes less than $N$ is about $N/\ln N$.
+
+Hey, that a lot primes! We can use this:
+
+**Lemma:** If $P$ is a prime number chosen uniformly at random the set of all
+ primes less than $N$ and $I(p) \neq I(t_{i},\ldots,t_{i+m-1})$ , then
+ \[
+     \Pr\{I(p)\bmod P = I(t_{i},\ldots,t_{i+m-1})\bmod P \} \le \frac{m\ln N\log_2 k}{N}
+ \]
+
+*Proof:* We've already given it.  We have $N/\ln N$ choices for $P$ and there are at most $m\log_2 k$ that cause $I(p)\bmod P = I(t_{i},\ldots,t_{i+m-1})\bmod P$.  &#8718;
