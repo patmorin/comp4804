@@ -31,4 +31,5 @@ There is no formal textbook for this course.  I will add reading material here s
 
 # Lecture topics
 
-* January 5: [Review of basic probability](prob-review.html)
+* Thu Jan 5: [Review of basic probability](prob-review.html)
+* Tue Jan 10: [Fingerprinting](fingerprinting.html)

@@ -77,7 +77,7 @@ To summarize, we have an algorithm (*Freivald's Algorithm*) that runs in $\Theta
 
 ## Rabin-Karp String Matching
 
-Here are my [original hand-written notes](notes/strings/) on this topic.
+Here are my [original hand-written notes](notes/strings/) on this topic.  Here's the [algorithm implemented in C](http://cglab.ca/~morin/teaching/4804-old/notes/stringmatch.c).
 
 Suppose we have a little string $p=p_0,\ldots,p_{m-1}$ and a big body of text $t=t_0,\ldots,t_{n-1}$.  Here $m<n$ and we want to look for occurrences of $p$ in $t$.
 More precisely,
@@ -159,3 +159,9 @@ Hey, that a lot primes! We can use this:
  \]
 
 *Proof:* We've already given it.  We have $N/\ln N$ choices for $P$ and there are at most $m\log_2 k$ that cause $I(p)\bmod P = I(t_{i},\ldots,t_{i+m-1})\bmod P$.  &#8718;
+
+How big do we need $N$ to be?  If we take $N > 2Q m\log m\log k$, then the probability in the lemma becomes at most $1/Q$.  Usually, we would take $N$ to be about as big as we could comfortably fit into a machine word $N=2^{32}$ or $N=2^{64}$.  Here's the whole thing in C:
+
+# Kalai's Extension to Don't Cares
+
+Coming soon...
