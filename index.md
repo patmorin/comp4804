@@ -32,4 +32,5 @@ There is no formal textbook for this course.  I will add reading material here s
 # Lecture topics
 
 * Thu Jan 5: [Review of basic probability](prob-review.html)
-* Tue Jan 10: [Fingerprinting](fingerprinting.html)
+* TBD: Analysis of quicksort and random binary search trees
+* TBD: [Fingerprinting](fingerprinting.html)
