@@ -1,7 +1,7 @@
 These are the resources for my course COMP4804: Algoritms II.
 
-If you have a Python3 installation with the markdown module, you can make
-all the HTML files using
+If you have a Python3 installation with the markdown and pygments modules,
+you can make all the HTML files using
 
     make
 

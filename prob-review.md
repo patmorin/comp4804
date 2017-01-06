@@ -18,7 +18,7 @@ the first two terms count $\Pr\{A\cap B\}$ twice
 </div>
 this is called the *inclusion-exclusion formula*.  We immediately get *Boole's Inequality*:
 \[
-   \Pr\{A \cup B\} \ge \Pr\{A\} + \Pr\{B\} \enspace.
+   \Pr\{A \cup B\} \le \Pr\{A\} + \Pr\{B\} \enspace.
 \]
 Boole's Inequality is also called the *union bound*.
 
@@ -137,6 +137,25 @@ Then
       & = n/2 \notag
 \end{align}
 The 0/1 valued $X_i$ are called *Bernoulli* or *indicator* random variables.
+
+If you're interested in a proof of linearity of expectation, here it is:
+\begin{align}
+   \E[X+Y] & = \sum_{x}\sum_y (x+y)\Pr\{\text{$X=x$ and $Y=y$}\} \notag \\
+           & = \sum_{x}\sum_y x\Pr\{\text{$X=x$ and $Y=y$}\}
+             + \sum_{x}\sum_y y\Pr\{\text{$X=x$ and $Y=y$}\} \notag  \\
+           & = \sum_{x}\sum_y x\Pr\{\text{$X=x$ and $Y=y$}\}
+             + \sum_y\sum_{x} y\Pr\{\text{$X=x$ and $Y=y$}\} \notag  \\
+          & = \sum_{x}x\sum_y \Pr\{\text{$X=x$ and $Y=y$}\}
+             + \sum_y y\sum_{x} \Pr\{\text{$X=x$ and $Y=y$}\} \notag  \\
+           & = \sum_{x} x\Pr\{\text{$X=x$}\}
+             + \sum_y\Pr\{\text{$Y=y$}\} \notag  \\
+          & = \E[X] + \E[Y] \notag
+\end{align}
+Not very enlightening.  The key step is where the number of summation symbols goes from 4 down to 2.  This is possible, because when we sum, over all $y$, $\Pr\{\text{$X=x$ and $Y=y$}\}$ we get $\Pr\{X=x\}$.  The Venn diagram below shows an example of this.  Here the event $X=x$ is shown as a pink circle. The different possible values of $Y$ are shown as blobs and they have to cover the pink circle because they cover all of $U$.
+<div class="centered" markdown="1">
+![the key step in proving linear of expectation](linexp.svg)
+</div>
+
 
 ## More Indicator Variable Examples
 

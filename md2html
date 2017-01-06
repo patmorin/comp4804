@@ -21,7 +21,8 @@ def main(args=None):
     text = text.replace('\\', '\\\\')
     htm = markdown.markdown(text, extensions=['markdown.extensions.toc',
                                               'markdown.extensions.tables',
-                                              'markdown.extensions.extra'])
+                                              'markdown.extensions.extra',
+                                              'markdown.extensions.codehilite'])
     with open('skeleton.htm', 'r') as f: html = f.read()
     html = html.replace('CONTENT', htm)
     with open(markdownOutFile, 'w', encoding="utf-8",
