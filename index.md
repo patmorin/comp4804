@@ -1,8 +1,7 @@
-# COMP 4804
 
 [TOC]
 
-## Course Outline
+# Course Outline
 
 This is an advanced course about the design and analysis of algorithms.
 The main topics covered in this course are:
@@ -14,20 +13,22 @@ The main topics covered in this course are:
     - Fixed-parameter tractable algorithms
     - Approximation algorithms
 
-## Assignments
+# Assignments
 
 * [Assignment 1](assn/assn1.pdf) is due Wednesday January 25th
 
-## Grading Scheme
+# Grading Scheme
 
-|Assignments 1–4       | 4×10%=40%|
-|Mid-term exam         | 20%      |
-|Final exam            | 40%      |
+ |
+:---------|-----:
+Assignments|40%
+Mid-term exam|20%
+Final exam|40%
 
-## Textbooks
+# Textbooks
 
 There is no formal textbook for this course.  I will add reading material here soon.
 
-## Lecture topics
+# Lecture topics
 
 * January 5: [Review of basic probability](prob-review.html)

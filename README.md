@@ -7,6 +7,6 @@ all the HTML files using
 
 If you have the appropriate version of ipe, you can make the svg figures using
 
-   make svg
+    make svg
 
 

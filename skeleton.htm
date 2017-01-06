@@ -11,20 +11,41 @@
         margin-bottom: 3em;
         padding: 0;
       }
+      div.title {
+        background-color: #de7737;
+         padding: 1em;
+         font-size: 160%;
+         font-weight: bold;
+      }
+      div.title a {
+         color: white;
+         text-decoration: none;
+      }
       div.content {
         max-width: 40em;
         margin: auto;
-        margin-bottom: 10em;
+        margin-bottom: 2em;
+      }
+      div.footer {
+        background-color: #de7737;
+        font-size: 160%;
+        padding: 1em;
+      }
+      div.footer a {
+        text-decoration: none;
+      }
+      div.footer img {
+        height: 1em;
       }
       em {
         color: #960018; /* Carmine */
       }
-      .center {
+      .centered {
         text-align: center
       }
       a {
-        color: #185800;
-        /* text-decoration: none; */
+        color: #d2344d;
+        text-decoration: none;
       }
       div.backhome {
         text-align: right;
@@ -58,15 +79,16 @@
     </script>
   </head>
   <body lang="en" class="hyphenate">
-    $\newcommand{\R}{\mathbb{R}}\DeclareMathOperator{\E}{\mathbf{E}}$
+    <div class="title">
+      <a href="index.html">COMP4804: Algorithms II</a>
+    </div>
     <div class="content">
-      <div class="backhome">
-        <a href="http://cglab.ca/~morin/teaching/4804/index.html">COMP4804</a>
-      </div>
+      $\newcommand{\R}{\mathbb{R}}\DeclareMathOperator{\E}{\mathbf{E}}$
       CONTENT
-      <div class="backhome">
-        <a href="http://cglab.ca/~morin/teaching/4804/index.html">COMP4804</a>
-      </div>
+    </div>
+    <div class="footer">
+      <a href="https://creativecommons.org/licenses/by/4.0/"><img src="cc-by.svg"><h/a>
+      &nbsp;<a href="https://github.com/patmorin/comp4804"><img src="octocat.svg"></a>
     </div>
   </body>
   <script>Hyphenator.run();</script>

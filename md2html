@@ -3,8 +3,6 @@ import sys
 import os
 import markdown
 
-from markdown.extensions.toc import TocExtension
-
 def main(args=None):
     if (args is None or len(args) < 2):
         print("Error, input file missing, usage:")
@@ -21,14 +19,16 @@ def main(args=None):
                                                  markdownOutFile))
     with open(markdownInFile, 'r', encoding='utf-8') as f: text = f.read()
     text = text.replace('\\', '\\\\')
-    htm = markdown.markdown(text, extensions=[TocExtension(baselevel=3)])
+    htm = markdown.markdown(text, extensions=['markdown.extensions.toc',
+                                              'markdown.extensions.tables',
+                                              'markdown.extensions.extra'])
     with open('skeleton.htm', 'r') as f: html = f.read()
     html = html.replace('CONTENT', htm)
     with open(markdownOutFile, 'w', encoding="utf-8",
         errors="xmlcharrefreplace") as f: f.write(html)
 
-    os.system('xsel --clipboard < {}'.format(markdownOutFile))
-    print("HTML file is copied to clipboard")
+    #os.system('xsel --clipboard < {}'.format(markdownOutFile))
+    #print("HTML file is copied to clipboard")
 
 if __name__ == '__main__':
         main(sys.argv)

@@ -13,8 +13,9 @@ Here are my original [hand-written notes](notes/prob/) on this topic.
 In general $\Pr\{A\cup B\} = \Pr\{A\} + \Pr\{B\} - \Pr\{A\cap B\}$ because
 the first two terms count $\Pr\{A\cap B\}$ twice
 
+<div class="centered" markdown="1">
 ![Venn Diagram](vd.svg)
-
+</div>
 this is called the *inclusion-exclusion formula*.  We immediately get *Boole's Inequality*:
 \[
    \Pr\{A \cup B\} \ge \Pr\{A\} + \Pr\{B\} \enspace.
@@ -183,5 +184,7 @@ The sum $1+1/2+\cdots 1/n$ is called the $n$th *harmonic number*, $H_n$. Using
 the fact that $\int_1^n 1/x\,dx = \ln n$, We can
 easily show that $\ln n \le H_n \le \ln n+1$:
 
+<div class="centered" markdown="1">
 ![Harmonic upper bound](harmonic1.svg)
 ![Harmonic lower bound](harmonic2.svg)
+</div>
