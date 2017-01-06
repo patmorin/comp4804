@@ -1,0 +1,73 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>comp4804</title>
+    <style type="text/css">
+      html, body {       /* for full-height background */
+        font: 14pt/22pt serif;
+        height: 100%;
+        margin: 0;
+        margin-top: 1em;
+        margin-bottom: 3em;
+        padding: 0;
+      }
+      div.content {
+        max-width: 40em;
+        margin: auto;
+        margin-bottom: 10em;
+      }
+      em {
+        color: #960018; /* Carmine */
+      }
+      .center {
+        text-align: center
+      }
+      a {
+        color: #185800;
+        /* text-decoration: none; */
+      }
+      div.backhome {
+        text-align: right;
+      }
+    </style>
+    <script src='http://cdn.mathjax.org/mathjax/latest/MathJax.js' type='text/javascript'>
+        MathJax.Hub.Config({
+            HTML: ["input/TeX","output/HTML-CSS"],
+            TeX: { extensions: ["AMSmath.js","AMSsymbols.js"],
+                   equationNumbers: { autoNumber: "AMS" } },
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX","output/HTML-CSS"],
+            tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                       processEscapes: true },
+            "HTML-CSS": { availableFonts: ["TeX"],
+                          linebreaks: { automatic: true } }
+        });
+        // Use this to fix conflict with Hyphenator and MathJax
+        MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+          MathJax.InputJax.TeX.prefilterHooks.Add(function (data) {
+            data.math = data.math.replace(/\u00AD/g,"");
+          });
+        });
+    </script>
+    <!-- <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script> -->
+    <script
+      src="Hyphenator/Hyphenator.js">
+    </script>
+  </head>
+  <body lang="en" class="hyphenate">
+    $\newcommand{\R}{\mathbb{R}}\DeclareMathOperator{\E}{\mathbf{E}}$
+    <div class="content">
+      <div class="backhome">
+        <a href="http://cglab.ca/~morin/teaching/4804/index.html">COMP4804</a>
+      </div>
+      CONTENT
+      <div class="backhome">
+        <a href="http://cglab.ca/~morin/teaching/4804/index.html">COMP4804</a>
+      </div>
+    </div>
+  </body>
+  <script>Hyphenator.run();</script>
+</html>
