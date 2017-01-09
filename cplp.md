@@ -54,12 +54,14 @@ The preceding algorithm easily generalizes to points in $\R^{d}$, though the exp
 
 ## Linear Programming
 
-* We are give a set $L$ of $n$ lines in $\R^2$ and we want to find the lowest point that is above all the lines.
+* We are give a set $L$ of $n$ lines in $\R^2$ and we want to find the lowest point that is above all the lines. (Think of dropping a marble on to the set of lines. Where does it roll to?)
 <div class="centered" markdown="1">
 ![A linear program](lp.svg)
 </div>
-* We can check that there is at least one line with positive slope and one line with negative slope (otherwise the program is *unbounded*)
+* We can check that there is at least one line with positive slope and one line with negative slope (otherwise the program is *unbounded*, the marble rolls away forever)
 * Trivial algorithm checks every pair of line intersections in $\Theta(n^3)$ time (we have to check if each intersection is above all the lines)
+
+**Exercise:**  How much better can you do than the trivial algorithm? $O(n^2)$, $O(n\log n)$?
 
 To make life simple, we assume there are no horizontal lines and no three lines interect in a common point. We can solve this problem again with a randomized incremental algorithm.
 
