@@ -1,6 +1,9 @@
+
 # Fingerprinting
 
 Here we look at a family of algorithmic techniques collectively called *fingerprinting*.
+
+[TOC]
 
 ## Freivald's Algorithm
 
@@ -26,9 +29,9 @@ is
 \]
 
 **Fingerprint Lemma:** Let $v=(v_1,\ldots,v_n)$ and $w=(w_1,\ldots,w_n)$ be two real-valued vectors with $v\neq w$,
-and let $r=(r_1,\ldots,r_n)$ be a vector whose values are integers chosen uniformly and independently at random from ${1,\ldots,k}$.  Then
+and let $r=(r_1,\ldots,r_n)$ be a vector whose values are integers chosen uniformly and independently at random from ${1,\ldots,K}$.  Then
 \[
-    \Pr\{r\cdot v = r\cdot w\} \le 1/k \enspace .
+    \Pr\{r\cdot v = r\cdot w\} \le 1/K \enspace .
 \]
 
 *Proof:* Since $v\neq w$, there is at least one index $k$ such that $v_i\neq w_i$. Now,
@@ -41,7 +44,7 @@ that satisfies this equation.  namely
 \[
    r_i' = \frac{\sum_{j\neq i} r_j(w_j - v_j)}{v_i-w_i}
 \]
-But $r_i$ is chosen randomly from among $k$ different values, so the probability that $r_i=r_i'$ is at most $1/k$. &#8718;
+But $r_i$ is chosen randomly from among $K$ different values, so the probability that $r_i=r_i'$ is at most $1/K$. &#8718;
 
 We can think of $r\cdot v$ and $r\cdot w$ as the *fingerprints* of $v$ and $w$; they are small quantities (a single number) that is almost surely different if $v$ and $w$ are different.
 
@@ -58,33 +61,31 @@ in $O(n^2)$ time.  You can read the code right off the formula for vector-matrix
         x[i] = x[i] + r[j]*A[i][j]
 
 The result of this multiplication is another $n$-vector.  That means we can compute
-$r\times A\times b)$ in $O(n^2)$ time.  We can also compute $r\times C$ in $O(n^2)$ time.
+$r\times A\times b)$ in $O(n^2)$ time; first compute $r'=rA$ and then compute $r'B$=rAB$.  We can also compute $r\times C$ in $O(n^2)$ time.
 Clearly, if $A\times B = C$, then $r\times A \times B = r\times C$.
 
 **Lemma:** If $A\times B\neq C$, and a $r$ is chosen as above, then
 \[
-    \Pr\{rAB = rC\} \le 1/k
+    \Pr\{rAB = rC\} \le 1/K
 \]
 
 *Proof:*  Let $X=AB$.  Then, since $X\neq C$, there must be some indices $i$ and $j$
 such that $X_{i,j} \neq C_{i,j}$.  In particular, column $j$ of $X$ is not equal to column $j$ of $C$. But $(rX)_i$
-is just the dot product of $r$ and column $j$ of $X$ and $(rC)_i$ is the dot product of column $j$ of $C$ with $r$.  Therefore, by the fingerprint lemma $\Pr\{(rAB)_i = (rC)_i\} \le 1/k$.  &#8718;
+is just the dot product of $r$ and column $j$ of $X$ and $(rC)_i$ is the dot product of column $j$ of $C$ with $r$.  Therefore, by the fingerprint lemma $\Pr\{(rAB)_i = (rC)_i\} \le 1/K$.  &#8718;
 
 To summarize, we have an algorithm (*Freivald's Algorithm*) that runs in $\Theta(n^2)$ time and, given three $n\times n$ matrices $A$, $B$, and $C$ will:
 
 * always return `true` if $A\times B=C$;
 * return `false` with probability at least $1-1/k$ if $A\times B\neq C$
 
-## Rabin-Karp String Matching
-
-Here are my [original hand-written notes](notes/strings/) on this topic.  Here's the [algorithm implemented in C](http://cglab.ca/~morin/teaching/4804-old/notes/stringmatch.c).
+## String Matching
 
 Suppose we have a little string $p=p_0,\ldots,p_{m-1}$ and a big body of text $t=t_0,\ldots,t_{n-1}$.  Here $m<n$ and we want to look for occurrences of $p$ in $t$.
 More precisely,
 
 * A *match* is an index $i$ such that $p_j = t_{i+j}$ for all $j\in\{0,\ldots,m-1\}$
 
-We want to find all matches.  The obvious algorithm looks like this:
+We want to find the first match or all matches.  The obvious algorithm looks like this:
 
     :::pseudocode
     for i = 0 to n-m
@@ -94,6 +95,32 @@ We want to find all matches.  The obvious algorithm looks like this:
         if j == m then output i
 
 This algorithm finds all matches and runs in $O(nm)$ time, and on some instances it runs in $\Omega(nm)$ time, even when there are no matches to output. This happens, for example, when $p=aaaa\ldots aab$ and $t=aaaa\ldots a$.
+
+### Kalai's algorithm
+
+Note that we can think of $p$ and $t$ as sequences of integers in the range ${0,\ldots,k-1}$ where $k$ is the alphabet size. Notice that, if we have a random vector $r\in\{1,\ldots,K\}^n$ of length $m$ then, by the Fingerprint Lemma, if $i$
+is not a match, then
+\[ \Pr\{ r\cdot p = r\cdot (t_{i},\ldots,t_{i+m-1}) \} \le 1/K \enspace . \]
+
+We can compute $r\cdot t$ in $O(m)$ time.  Now, if we can compute $r\cdot (t_{i},\ldots,t_{i+m-1})$ for all $i\in\{1,\ldots,n-m\}$, then we have an efficient string matching algorithm.  This kind of calculation is called the *convolution* of $r$ and $t$.  It can be done in $O(n\log n)$ time using the Fast-Fourier Transform (which we may discuss later in the course.)
+
+This means that we have an algorithm that runs in $O(n\log n)$ time and returns a list of integers $L$ such that
+1. If $i$ is a match, then $i$ is in $L$.
+2. If $i$ is not a match, then $\Pr\{i\in L\} \le 1/K$.
+
+That's already impressive, what even more impressive is that this algorithm can also easily handle *wildcards*; these are locations in $p$ that match any character.  For example, we may have a pattern like "p?st" that matches "past", "post", and "pest". This extension is trivial: At any index where the pattern has a wildcard, we just set the corresponding value in $r$ to zero.  Then this character will not contribute to the fingerprint $r\cdot p$ or to $r\cdot (t_i,\ldots,t_{i+m-1})$.
+
+**Theorem:** Given a pattern string $p$ of length $m$, possibly with wildcards and a text string, $t$ of length $n$, there is an algorithm that runs in $O(n\log n)$ time and returns a list of integers $L$ such that
+1. If $i$ is a match, then $i$ is in $L$.
+2. If $i$ is not a match, then $\Pr\{i\in L\} \le 1/K$.
+
+Of course, if we take $K \ge m$, then we can even verify each value of $i$ $O(m)$ time and to see if it really is a match.  The expected amount of time we will spend on non-matches is only $O(n)$.  [Exercise: write this down carefully.]
+
+### Rabin-Karp String Matching
+
+
+Here are my [original hand-written notes](notes/strings/) on this topic.  Here's the [algorithm implemented in C](http://cglab.ca/~morin/teaching/4804-old/notes/stringmatch.c).
+
 
 Now we can think of $p$ and $t$ as sequences of integers in the range ${0,\ldots,k-1}$ where $k$ is the alphabet size.  We can compress $p$ down to think of $p$ as a a single integer
 \[
@@ -161,7 +188,3 @@ Hey, that a lot primes! We can use this:
 *Proof:* We've already given it.  We have $N/\ln N$ choices for $P$ and there are at most $m\log_2 k$ that cause $I(p)\bmod P = I(t_{i},\ldots,t_{i+m-1})\bmod P$.  &#8718;
 
 How big do we need $N$ to be?  If we take $N > 2Q m\log m\log k$, then the probability in the lemma becomes at most $1/Q$.  Usually, we would take $N$ to be about as big as we could comfortably fit into a machine word $N=2^{32}$ or $N=2^{64}$.  Here's the whole thing in C:
-
-# Kalai's Extension to Don't Cares
-
-Coming soon...

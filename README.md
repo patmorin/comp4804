@@ -5,7 +5,11 @@ you can make all the HTML files using
 
     make
 
-If you have the appropriate version of ipe, you can make the svg figures using
+If you want auto-hyphenation in the resulting HTML (recommended), use
+
+    git clone git@github.com:mnater/Hyphenator.git
+
+If you have the appropriate version of ipe, you can make the svg figures, though they're already included in the repository.
 
     make svg
 
