@@ -161,7 +161,7 @@ To do this, we're going to pick a prime number $P$ and do all our arithmetic mod
 \[
    I(p)\bmod P = I(t_i,\ldots,t_{i+m-1}) \bmod P
 \]
-doesn't mean $I(P)=I(t_i,\ldots,t_{i+m-1})
+doesn't mean $I(P)=I(t_i,\ldots,t_{i+m-1})$.
 
 We're going to make sure that it's *probably works most of the time*.  The statement
 \[
