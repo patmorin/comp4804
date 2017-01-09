@@ -1,8 +1,10 @@
-# Review of basic probability
+<div class="topic">
+Review of Basic Probability
+</div>
 
 Here are my original [hand-written notes](notes/prob/) on this topic.
 
-## Probability function
+# Probability function
 
 * Let $U$ (the universe) be some set
 * A *probability function* $\Pr\colon 2^U\to [0,1]$ has the following properties:
@@ -22,14 +24,14 @@ this is called the *inclusion-exclusion formula*.  We immediately get *Boole's I
 \]
 Boole's Inequality is also called the *union bound*.
 
-## Some terminology
+# Some terminology
 
 * $A$ and $B$ are called *events*
 * If $|A|=1$, then it is called an *elementary event*
 * $\Pr\{A\cup B\}$ is also called $\Pr\{\text{$A$ or $B$}\}$
 * $\Pr\{A\cap B\}$ is also called $\Pr\{\text{$A$ and $B$}\}$
 
-## Examples
+# Examples
 
 * Coin toss: $U=\{H, T\}$ and $\Pr\{H\} = \Pr\{T\} = 1/2$
 * Die toss (6-sided): $U=\{1,2,3,4,5,6\}$ and $\Pr\{i\} = 1/6$ for each
@@ -52,7 +54,7 @@ Boole's Inequality is also called the *union bound*.
     * $\Pr\{11\}=2/36$
     * $\Pr\{12\}=1/36$
 
-## Calculating some probabilities
+# Calculating some probabilities
 
 * Roll a die, what is the probability of getting an even number?
   \[\Pr\{2,4,6\} = \Pr\{2\} + \Pr\{4\} + \Pr\{6\} = 3/6 = 1/2\]
@@ -80,7 +82,7 @@ Boole's Inequality is also called the *union bound*.
   events*.  If we know $\Pr\{A\}$, then we know
   that $\Pr\{\overline{A}\} = \Pr\{U\setminus A\} = 1-\Pr\{A\}$.
 
-## Expectation and Random Variables
+# Expectation and Random Variables
 * Let $X\colon U\to \R$ map each element of $U$ to a real number
 * The *expected value* of $X$ is
   \[ \sum_{a\in U}\Pr\{a\}\times X(a) \]
@@ -110,7 +112,7 @@ Boole's Inequality is also called the *union bound*.
           & = 7 \notag
   \end{align}
 
-## Linearity of Expectation
+# Linearity of Expectation
 
 * For any random variables $X$ and $Y$,
 \[ \E[X+Y] = \E[X] + \E[Y] \]
@@ -157,13 +159,13 @@ Not very enlightening.  The key step is where the number of summation symbols go
 </div>
 
 
-## More Indicator Variable Examples
+# More Indicator Variable Examples
 
 Indicator variables, along with linearity of expectation are an extremely
 efficient way of computing expected values.
 
 
-### Balls in Urns
+## Balls in Urns
 
 Throw $n$ balls into $m$ urns in such a way that each ball is equally likely to land in any urn.  (Exercise: Check, using the definition of a probability function, that this implies $\Pr\{\text{ball $i$ lands in urn 1}\}=1/m$).  What is the expected number of balls in the first urn?
 
@@ -182,7 +184,7 @@ So
 \]
 Done.
 
-### Records
+## Records
 
 Take a random permutation $x_1,\ldots,x_n$ of $1,\ldots, n$. Call $x_i$ a *record* if $x_i=\max\{x_1,\ldots,x_i\}$.  What is the expected number of records?
 

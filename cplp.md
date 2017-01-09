@@ -1,8 +1,12 @@
-# Closest Pair and Linear Programming
+<div class="topic">
+Closest Pair and Linear Programming
+</div>
 
-This lecture looks at two randomized algorithms for two geometric problems.
+This lecture looks at two randomized algorithms for two geometric problems.  Both algorithms are *randomized incremental algorithms*: They each compute a random permutation of the input and then incrementally solve the problem by adding one input element at a time and updating the current solution after the addition of each element.
 
-## Closest Pair
+[TOC]
+
+# Closest Pair
 
 * Let $P$ be a set of $n$ points in $\R^2$
 * We want to find a *closest pair* in $P$ that is, a pair of points $\{a,b\}\subset P$
@@ -14,7 +18,7 @@ This lecture looks at two randomized algorithms for two geometric problems.
 
 For simplicity, we will assume that all inter-point distances are unique, so there are no ties.  Recall that a *hash table* can store a set of key/value pairs so that, we can test if any key is in the set and look up its value in $O(1)$ expected time.
 
-We will solve the closest-pair problem with a *randomized incremental algorithm*:
+We will solve the closest-pair problem with this randomized incremental algorithm:
 
 * Take a random permutation of the points of $P$; call this $(p_1),\ldots,(p_n)$,
   where $p_i=(x_i,y_i)$
@@ -43,16 +47,16 @@ We will solve the closest-pair problem with a *randomized incremental algorithm*
 \]
 Then, the expected amount of time spent rebuilding hash tables is
 \begin{align}
-  E\left[\sum_{i=2}^n I_i\times O(i)\right] =
-  \sum_{i=2}^n E[I_i\times O(i)]
-  = \sum_{i=2}^n E[I_i]\times O(i)
+  \E\left[\sum_{i=2}^n I_i\times O(i)\right]
+  = \sum_{i=2}^n \E[I_i\times O(i)]
+  = \sum_{i=2}^n \E[I_i]\times O(i)
   = \sum_{i=2}^n O(1) = O(n)
 \end{align}
 The other steps of the algorithm easily run in $O(n)$ time.  If you're not sure how the random permutation is generated, you can read about the [Fisher–Yates Shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle). &#8718;
 
 The preceding algorithm easily generalizes to points in $\R^{d}$, though the expected running time becomes $O(C^d n)$ for some constant $C$.  So the algorithm is linear in $n$ but exponential in $d$. This is pretty common for geometric problems and is sometimes called the *curse of dimensionality*.
 
-## Linear Programming
+# Linear Programming
 
 * We are give a set $L$ of $n$ lines in $\R^2$ and we want to find the lowest point that is above all the lines. (Think of dropping a marble on to the set of lines. Where does it roll to?)
 <div class="centered" markdown="1">

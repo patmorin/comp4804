@@ -1,11 +1,12 @@
-
-# Fingerprinting
+<div class="topic">
+Fingerprinting
+</div>
 
 Here we look at a family of algorithmic techniques collectively called *fingerprinting*.
 
 [TOC]
 
-## Freivald's Algorithm
+# Freivald's Algorithm
 
 * We have three $n\times n$ matrices, $A$, $B$, and $C$, and we want to check if
 \[
@@ -78,7 +79,7 @@ To summarize, we have an algorithm (*Freivald's Algorithm*) that runs in $\Theta
 * always return `true` if $A\times B=C$;
 * return `false` with probability at least $1-1/k$ if $A\times B\neq C$
 
-## String Matching
+# String Matching
 
 Suppose we have a little string $p=p_0,\ldots,p_{m-1}$ and a big body of text $t=t_0,\ldots,t_{n-1}$.  Here $m<n$ and we want to look for occurrences of $p$ in $t$.
 More precisely,
@@ -96,7 +97,7 @@ We want to find the first match or all matches.  The obvious algorithm looks lik
 
 This algorithm finds all matches and runs in $O(nm)$ time, and on some instances it runs in $\Omega(nm)$ time, even when there are no matches to output. This happens, for example, when $p=aaaa\ldots aab$ and $t=aaaa\ldots a$.
 
-### Kalai's algorithm
+## Kalai's algorithm
 
 Note that we can think of $p$ and $t$ as sequences of integers in the range ${0,\ldots,k-1}$ where $k$ is the alphabet size. Notice that, if we have a random vector $r\in\{1,\ldots,K\}^n$ of length $m$ then, by the Fingerprint Lemma, if $i$
 is not a match, then
@@ -116,8 +117,7 @@ That's already impressive, what even more impressive is that this algorithm can 
 
 Of course, if we take $K \ge m$, then we can even verify each value of $i$ $O(m)$ time and to see if it really is a match.  The expected amount of time we will spend on non-matches is only $O(n)$.  [Exercise: write this down carefully.]
 
-### Rabin-Karp String Matching
-
+## The Rabin-Karp Algorithm
 
 Here are my [original hand-written notes](notes/strings/) on this topic.  Here's the [algorithm implemented in C](http://cglab.ca/~morin/teaching/4804-old/notes/stringmatch.c).
 
@@ -187,4 +187,4 @@ Hey, that a lot primes! We can use this:
 
 *Proof:* We've already given it.  We have $N/\ln N$ choices for $P$ and there are at most $m\log_2 k$ that cause $I(p)\bmod P = I(t_{i},\ldots,t_{i+m-1})\bmod P$.  &#8718;
 
-How big do we need $N$ to be?  If we take $N > 2Q m\log m\log k$, then the probability in the lemma becomes at most $1/Q$.  Usually, we would take $N$ to be about as big as we could comfortably fit into a machine word $N=2^{32}$ or $N=2^{64}$.  Here's the whole thing in C:
+How big do we need $N$ to be?  If we take $N > 2Q m\log m\log k$, then the probability in the lemma becomes at most $1/Q$.  Usually, we would take $N$ to be about as big as we could comfortably fit into a machine word $N=2^{32}$ or $N=2^{64}$.  Here's the [whole thing in C](http://cglab.ca/~morin/teaching/4804/notes/stringmatch.c).
