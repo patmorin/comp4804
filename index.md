@@ -1,6 +1,3 @@
-
-[TOC]
-
 # Course Outline
 
 This is an advanced course about the design and analysis of algorithms.
