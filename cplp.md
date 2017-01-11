@@ -40,16 +40,17 @@ We will solve the closest-pair problem with this randomized incremental algorith
 
 **Theorem:** Given a set of $n$ points in $\R^2$, we can find the closest pair in $O(n)$ expected time
 
-*Proof:* After computing the random permutation, the rest of the algorithm examines each point, does a constant number of work, and possibly rebuilds the hash table.  For each $i\in\{2,\ldots,n\}$, let  
+*Proof:* After computing the random permutation, the rest of the algorithm examines each point, does a constant number of work, and possibly rebuilds the hash table.  Let $c>0$ be some constant and for each $i\in\{2,\ldots,n\}$, let  
 \[
-    I_i = \begin{cases} 1 & \text{if $p_i$ is part of the CP of $p_1,\ldots,p_i$} \\
+    I_i = \begin{cases} ci & \text{if $p_i$ is part of the CP of $p_1,\ldots,p_i$} \\
                        0 & \text{otherwise .} \end{cases}
 \]
+Exercise: Check that $\E[I_i] \le 2c$.
 Then, the expected amount of time spent rebuilding hash tables is
 \begin{align}
-  \E\left[\sum_{i=2}^n I_i\times O(i)\right]
-  = \sum_{i=2}^n \E[I_i\times O(i)]
-  = \sum_{i=2}^n \E[I_i]\times O(i)
+  \E\left[\sum_{i=2}^n I_i\right]
+  = \sum_{i=2}^n \E[I_i]
+  = \sum_{i=2}^n 2c
   = \sum_{i=2}^n O(1) = O(n)
 \end{align}
 The other steps of the algorithm easily run in $O(n)$ time.  If you're not sure how the random permutation is generated, you can read about the [Fisher–Yates Shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle). &#8718;
@@ -78,7 +79,7 @@ To make life simple, we assume there are no horizontal lines and no three lines 
     2. $\ell_i$ is above $p^\star$ in which case the new solution involves $\ell_i$
        and we can find it in $O(i)$ time
 
-This should look familiar.  All we need to show now is that the new solution is not likely to involve $\ell_i$.  Exactly 2 lines in $\ell_1,\ldots,\ell_i$ define the optimal solution for $\ell_1,\ldots,\ell_i$.  Now, $\ell_i$ is uniformly chosen from a set of size $i-2$, so the probability that $\ell_i$ is one of the two that defines the solution is at most $i/(i-2)$.  The rest of the analysis is just like the analysis of the closest pair algorithm.
+This should look familiar.  All we need to show now is that the new solution is not likely to involve $\ell_i$.  Exactly 2 lines in $\ell_1,\ldots,\ell_i$ define the optimal solution for $\ell_1,\ldots,\ell_i$.  Now, $\ell_i$ is uniformly chosen from a set of size $i-2$, so the probability that $\ell_i$ is one of the two that defines the solution is at most $2/(i-2)$.  The rest of the analysis is just like the analysis of the closest pair algorithm.
 
 **Theorem:** Given $n$ lines in $\R^2$, we can find the lowest point that is above all the lines in $O(n)$ expected time.
 

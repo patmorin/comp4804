@@ -4,6 +4,8 @@ Review of Basic Probability
 
 Here are my original [hand-written notes](notes/prob/) on this topic.
 
+[TOC]
+
 # Probability function
 
 * Let $U$ (the universe) be some set

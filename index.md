@@ -10,6 +10,14 @@ The main topics covered in this course are:
     - Fixed-parameter tractable algorithms
     - Approximation algorithms
 
+# Office Hours
+
+
+|
+-------|-------
+Alina Shaikhet|Tuesday 10:00–12:00
+Pat Morin|Thursday 11:00–12:00 (or by appointment)
+
 # Assignments
 
 * [Assignment 1](assn/assn1.pdf) is due Wednesday January 25th
@@ -27,6 +35,8 @@ Final exam|40%
 There is no formal textbook for this course.  I will add reading material here soon.
 
 # Lecture topics
+
+The notes here are created by me when preparing for class. I do appreciate it if you point out any errors you find in them.
 
 * Thu Jan 5: [Review of basic probability](prob-review.html)
 * Tue Jan 10: [Closest pair and linear programming](cplp.html)
