@@ -8,10 +8,21 @@ Here we look at a family of algorithmic techniques collectively called *fingerpr
 
 # Freivald's Algorithm
 
-* We have three $n\times n$ matrices, $A$, $B$, and $C$, and we want to check if
+Remember the obvious $\Theta(n^3)$ algorithm for multiplying two $n\times n$ matrices, $A$ and $B$:
+
+    Multiply(A, B, n)
+      for i = 1 to n
+        for j = 1 to n
+          C[i][j] = 0
+          for k = 1 to n
+            C[i][j] = C[i][j] + A[i][k]*B[k][j]
+
+Suppose, instead that someone gives us three $n\times n$ matrices $A$, $B$, and $C$ and claims that
 \[
    A \times B = C \enspace.
 \]
+How can we verify that this is true?
+
 * The obvious thing to do is to compute $A\times B$ ourselves and check if the
   result is correct
 * The obvious matrix-multiplication algorithm takes $\Theta(n^3)$ time.
@@ -62,7 +73,7 @@ in $O(n^2)$ time.  You can read the code right off the formula for vector-matrix
         x[i] = x[i] + r[j]*A[i][j]
 
 The result of this multiplication is another $n$-vector.  That means we can compute
-$r\times A\times b)$ in $O(n^2)$ time; first compute $r'=rA$ and then compute $r'B$=rAB$.  We can also compute $r\times C$ in $O(n^2)$ time.
+$r\times A\times B$ in $O(n^2)$ time; first compute $v=rA$ and then compute $vB=rAB$.  We can also compute $rC$ in $O(n^2)$ time.
 Clearly, if $A\times B = C$, then $r\times A \times B = r\times C$.
 
 **Lemma:** If $A\times B\neq C$, and a $r$ is chosen as above, then
@@ -188,3 +199,17 @@ Hey, that a lot primes! We can use this:
 *Proof:* We've already given it.  We have $N/\ln N$ choices for $P$ and there are at most $m\log_2 k$ that cause $I(p)\bmod P = I(t_{i},\ldots,t_{i+m-1})\bmod P$.  &#8718;
 
 How big do we need $N$ to be?  If we take $N > 2Q m\log m\log k$, then the probability in the lemma becomes at most $1/Q$.  Usually, we would take $N$ to be about as big as we could comfortably fit into a machine word $N=2^{32}$ or $N=2^{64}$.  Here's the [whole thing in C](http://cglab.ca/~morin/teaching/4804/notes/stringmatch.c).
+
+# Primality Testing
+
+If we want to test if a number $P$ is prime, we can use a bit of number theory.  Write $P-1$ as $2^s d$ for integer $s$ and odd $d$.  Now, if $P$ is prime, then for every $a\in\{1,\ldots,P-1\}$,
+
+* $a^d \equiv 1\pmod P$; or
+* $a^{2rd} \equiv -1 \pmod P$, for some $r\in\{0,\ldots,s-1\}$.
+
+On the other hand, if $P$ is not prime, then for at least half the values of $a\in\{1,\ldots,P-1\}$,
+
+* $a^d \not\equiv 1\pmod P$; or
+* $a^{2rd} \not\equiv -1 \pmod P$, for all $r\in\{0,\ldots,s-1\}$.
+
+So the test is easy. We pick a random $a$ and check if the first or second case holds. In the case when $P$ is not prime, we will correctly detect it with probability at least $1/2$.  If we want to be more certain, then we can repeat the experiment $k$ times and we will correctly detect composites with probability at least $1-2^{-k}$.

@@ -10,6 +10,14 @@ The main topics covered in this course are:
     - Fixed-parameter tractable algorithms
     - Approximation algorithms
 
+# Important Dates
+
+|
+---|----
+Tue Feb 14|Mid-term exam (in class)
+Thu Mar 30|Extra-long class
+Thu Apr 6|Final exam (in class)
+
 # Office Hours
 
 
