@@ -48,5 +48,6 @@ The notes here are created by me when preparing for class. I do appreciate it if
 
 * Thu Jan 5: [Review of basic probability](prob-review.html)
 * Tue Jan 10: [Closest pair and linear programming](cplp.html)
-* Thu Jan 12: [Fingerprinting](fingerprinting.html)
+* Thu Jan 12 and Tue Jan 17: [Fingerprinting](fingerprinting.html)
+* Thu Jan 19: [Binary space partition trees](bsp.html)
 * TBD: Analysis of quicksort and random binary search trees
