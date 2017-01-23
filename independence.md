@@ -1,10 +1,28 @@
 <div class="topic">
-Review of Basic Probability
+Conditional Probability and Dependence
 </div>
 
-Here are my original [hand-written notes](notes/prob/) on this topic.
+Here are my original [hand-written notes](notes/indep/) on this topic.
 
 [TOC]
+
+# Conditional Probability
+
+The following definition tells us the *conditional probability* of an event $A$ given some event $B$:
+\[
+    \Pr\{A\mid B\} = \frac{\Pr\{A\cap B\}}{\Pr\{B\}}
+\]
+We interpret this as "If I tell you that $B$ happened, then what is the probability that $A$ also happened"
+
+## Basic Examples
+
+Roll 1 six-sided die, $D$:
+
+* \[\Pr\{D=3\mid \text{$D$ is odd}\}
+   = \frac{\Pr\{\text{$D=3$ and $D$ is odd}\}}{\Pr\{\text{$D$ is odd}\}}
+   = \frac{1/6}{1/2} = 1/3
+   \]
+
 
 # Probability function
 

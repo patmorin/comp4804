@@ -76,12 +76,12 @@ $s$ and $a_1,\ldots,a_i$ and we pick $s$ as the root of that subtree.  We could 
     \Pr\{\text{$s$ cuts $a_i$}\} \le \Pr\{A_i=1\} = \E[A_i] = 1/(i+1) \enspace .
 \]
 By the same argument, $\E[B_i] = 1/(i+1)$.  Now we can determine $\E[X_s]$ with
-\begin{align}
-   \E[X_s] & = \sum_{i=1}^k \E[A_i] +  \sum_{i=1}^{k'} \E[B_i] \notag \\
-       & \le \sum_{i=1}^k 1/(i+1) +  \sum_{i=1}^{k'} (1/i+1) \notag \\
-       & = \sum_{i=1}^n 1/(i+1) +  \sum_{i=1}^{n'} (1/i+1) \notag \\
+\begin{align*}
+   \E[X_s] & = \sum_{i=1}^k \E[A_i] +  \sum_{i=1}^{k'} \E[B_i] \\
+       & \le \sum_{i=1}^k 1/(i+1) +  \sum_{i=1}^{k'} (1/i+1) \\
+       & = \sum_{i=1}^n 1/(i+1) +  \sum_{i=1}^{n'} (1/i+1) \\
        & = 2H_n - 2 \le 2 \ln n \enspace .
-\end{align}
+\end{align*}
 The last line and the inequality there refer to the harmonic numbers discussed at the end  of [the first lecture](prob-review.html).  Finally, summing over all $s$ gives
 \[
    \E[k] = \sum_{s\in S}\E[X_s] \le 2n\ln n \enspace

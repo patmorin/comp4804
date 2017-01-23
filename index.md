@@ -20,13 +20,15 @@ Thu Apr 6|Final exam (in class)
 
 # Office Hours
 
-
 |
 -------|-------
 Alina Shaikhet|Tuesday 10:00–12:00
 Pat Morin|Thursday 11:00–12:00 (or by appointment)
 
 # Assignments
+
+All assignments should be put in the assignment dropbox labelled COMP4804
+in HP 3115.
 
 * [Assignment 1](assn/assn1.pdf) is due Wednesday January 25th
 
@@ -50,4 +52,5 @@ The notes here are created by me when preparing for class. I do appreciate it if
 * Tue Jan 10: [Closest pair and linear programming](cplp.html)
 * Thu Jan 12 and Tue Jan 17: [Fingerprinting](fingerprinting.html)
 * Thu Jan 19: [Binary space partition trees](bsp.html)
-* TBD: Analysis of quicksort and random binary search trees
+* *Reference:* [Basic probablity worksheet](http://cglab.ca/~morin/teaching/4804-old/notes/basicprob/sheet1.pdf)
+* Tue Jan 24: [Conditional probability and dependence](independence.html)

@@ -47,12 +47,12 @@ We will solve the closest-pair problem with this randomized incremental algorith
 \]
 Exercise: Check that $\E[I_i] \le 2c$.
 Then, the expected amount of time spent rebuilding hash tables is
-\begin{align}
+\[
   \E\left[\sum_{i=2}^n I_i\right]
   = \sum_{i=2}^n \E[I_i]
   = \sum_{i=2}^n 2c
-  = \sum_{i=2}^n O(1) = O(n)
-\end{align}
+  = \sum_{i=2}^n O(1) = O(n) \enspace .
+\]
 The other steps of the algorithm easily run in $O(n)$ time.  If you're not sure how the random permutation is generated, you can read about the [Fisher–Yates Shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle). &#8718;
 
 The preceding algorithm easily generalizes to points in $\R^{d}$, though the expected running time becomes $O(C^d n)$ for some constant $C$.  So the algorithm is linear in $n$ but exponential in $d$. This is pretty common for geometric problems and is sometimes called the *curse of dimensionality*.
