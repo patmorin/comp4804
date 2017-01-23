@@ -2,6 +2,7 @@
 import sys
 import os
 import markdown
+import re
 
 def main(args=None):
     if (args is None or len(args) < 2):
@@ -16,14 +17,24 @@ def main(args=None):
     markdownOutFile = os.path.join(dir, ".".join([file,'html']))
 
     print("Reading {} and writing to {}".format(markdownInFile,
-                                                 markdownOutFile))
+                                                markdownOutFile))
     with open(markdownInFile, 'r', encoding='utf-8') as f: text = f.read()
     text = text.replace('\\', '\\\\')
+    text = text.replace('{align*}', '{alignstar}')
+
+    pagetitle = 'comp4804'
+    m = re.search(r'<div class="topic">(.*?)</div>', text, re.M|re.S)
+    if m:
+        pagetitle = m.group(1).strip()
+    print("title = {}".format(pagetitle))
+
     htm = markdown.markdown(text, extensions=['markdown.extensions.toc',
                                               'markdown.extensions.tables',
                                               'markdown.extensions.extra',
                                               'markdown.extensions.codehilite'])
+    htm = htm.replace('{alignstar}', '{align*}')
     with open('skeleton.htm', 'r') as f: html = f.read()
+    html = html.replace('PAGETITLE', pagetitle)
     html = html.replace('CONTENT', htm)
     with open(markdownOutFile, 'w', encoding="utf-8",
         errors="xmlcharrefreplace") as f: f.write(html)
