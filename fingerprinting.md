@@ -223,6 +223,6 @@ So the test is easy. We pick a random $a$ and check if the first or second case 
 
 Now the Rabin-Karp string-matching algorithm wants a prime chosen uniformly at random from among $\{2,\ldots,N\}$.  We can get such a random prime by repeatedly choosing a random number in $\{2,\ldots,N\}$ and testing if that number is prime using the Miller-Rabin Algorithm.  The Prime Number Theorem says that we can expect to find a prime after about $\ln N$ guesses.
 
-**Theorem:** There is a randomized algorithm that does $O(k\log^2 N)$ modular artihmetic operations of integers of maximum value $N$ and that chooses a prime number uniformly at random from $\{2,\lodts,N\}$.
+**Theorem:** There is a randomized algorithm that does $O(k\log^2 N)$ modular artihmetic operations of integers of maximum value $N$ and that chooses a prime number uniformly at random from $\{2,\ldots,N\}$.
 
 Note that we're counting modular arithmetic operations here rather than running-time because for really big values of $N$, like those used in public-key cryptography, each arithmetic operation takes more than costant time.
