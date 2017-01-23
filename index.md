@@ -22,8 +22,11 @@ Thu Apr 6|Final exam (in class)
 
 |
 -------|-------
-Alina Shaikhet|Tuesday 10:00–12:00
+Alina Shaikhet|Tuesday 10:00–11:30
 Pat Morin|Thursday 11:00–12:00 (or by appointment)
+
+Alina also has an extra two hours of office hours on the days assignments are due.
+
 
 # Assignments
 
@@ -53,4 +56,5 @@ The notes here are created by me when preparing for class. I do appreciate it if
 * Thu Jan 12 and Tue Jan 17: [Fingerprinting](fingerprinting.html)
 * Thu Jan 19: [Binary space partition trees](bsp.html)
 * *Reference:* [Basic probablity worksheet](http://cglab.ca/~morin/teaching/4804-old/notes/basicprob/sheet1.pdf)
-* Tue Jan 24: [Conditional probability and dependence](independence.html)
+* Tue Jan 24: [Conditional probability, dependence, and Markov's Inequality](independence.html)
+* Thu Jan 26: [Randomized min-cut algorithms](mincut.md)
