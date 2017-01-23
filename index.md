@@ -24,7 +24,7 @@ Thu Apr 6|Final exam (in class)
 |
 -------|-------
 Alina Shaikhet|Tuesday 10:00–12:00
-Pat Morin|Thursday 11:00–12:00 (or by appointment)
+Pat Morin|Thursday 10:30–11:30 (or by appointment)
 
 # Assignments
 

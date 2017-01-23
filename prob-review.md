@@ -40,7 +40,7 @@ Boole's Inequality is also called the *union bound*.
      $i\in\{1,\ldots,6\}$.
 * Tossing 2 coins (one silver and one gold): $U=\{TT, TH, HT, HH\}$ and
    $\Pr\{TT\}=\Pr\{TH\}=\Pr\{HT\}=\Pr\{HH\}=1/4$
-* Rolling two dices (one blue and one red): $U=\{(i,j):i,j\in\{1,\ldots,6\}$ and
+* Rolling two dices (one blue and one red): $U=\{(i,j):i,j\in\{1,\ldots,6\}\}$ and
   $\Pr\{(i,j)\} = 1/36$ for all $i,j\in\{1,\ldots,6\}$
 * Rolling two dice and taking their sum:
   \[  U = \{2,3,4,5,6,7,8,9,10,11,12\} \]
@@ -79,7 +79,7 @@ Boole's Inequality is also called the *union bound*.
   \end{align}
   This used Property 3 again, since a number can't be both even and odd.
 * Roll two dice, what is the probability that their sum is odd?
-  \[\Pr\{2\not\mid (i+1)\} = 1-\Pr\{2\mid (i+j)\} = 1-1/2 = 1/2  \]
+  \[\Pr\{2\not\mid (i+j)\} = 1-\Pr\{2\mid (i+j)\} = 1-1/2 = 1/2  \]
   This is a very common trick for computing the probabilities of *complementary
   events*.  If we know $\Pr\{A\}$, then we know
   that $\Pr\{\overline{A}\} = \Pr\{U\setminus A\} = 1-\Pr\{A\}$.
@@ -152,7 +152,7 @@ If you're interested in a proof of linearity of expectation, here it is:
           & = \sum_{x}x\sum_y \Pr\{\text{$X=x$ and $Y=y$}\}
              + \sum_y y\sum_{x} \Pr\{\text{$X=x$ and $Y=y$}\} \notag  \\
            & = \sum_{x} x\Pr\{\text{$X=x$}\}
-             + \sum_y\Pr\{\text{$Y=y$}\} \notag  \\
+             + \sum_y y\Pr\{\text{$Y=y$}\} \notag  \\
           & = \E[X] + \E[Y] \notag
 \end{align}
 Not very enlightening.  The key step is where the number of summation symbols goes from 4 down to 2.  This is possible, because when we sum, over all $y$, $\Pr\{\text{$X=x$ and $Y=y$}\}$ we get $\Pr\{X=x\}$.  The Venn diagram below shows an example of this.  Here the event $X=x$ is shown as a pink circle. The different possible values of $Y$ are shown as blobs and they have to cover the pink circle because they cover all of $U$.
@@ -182,7 +182,7 @@ Then
 \]
 So
 \[
-    \E[I_1+\cdots I_n] = \E[I_i] + \cdots \E[I_n] = n/m
+    \E[I_1+\cdots I_n] = \E[I_1] + \cdots \E[I_n] = n/m
 \]
 Done.
 
@@ -201,7 +201,7 @@ The largest value among $x_1,\ldots,x_i$ is equally likely to be any of $x_1,\ld
 \]
 So, the expected number of records is
 \[
-    \E[I_i+\cdots+I_n] = \E[I_i] + \cdots \E[I_n] = 1 + 1/2 + 1/3+\cdots 1/n
+    \E[I_1+\cdots+I_n] = \E[I_1] + \cdots \E[I_n] = 1 + 1/2 + 1/3+\cdots 1/n
 \]
 The sum $1+1/2+\cdots 1/n$ is called the $n$th *harmonic number*, $H_n$. Using
 the fact that $\int_1^n 1/x\,dx = \ln n$, We can

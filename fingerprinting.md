@@ -6,7 +6,7 @@ Here we look at a family of algorithmic techniques collectively called *fingerpr
 
 [TOC]
 
-# Freivald's Algorithm
+# Freivalds' Algorithm
 
 Remember the obvious $\Theta(n^3)$ algorithm for multiplying two $n\times n$ matrices, $A$ and $B$:
 
@@ -88,35 +88,43 @@ is just the dot product of $r$ and column $j$ of $X$ and $(rC)_i$ is the dot pro
 To summarize, we have an algorithm (*Freivald's Algorithm*) that runs in $\Theta(n^2)$ time and, given three $n\times n$ matrices $A$, $B$, and $C$ will:
 
 * always return `true` if $A\times B=C$;
-* return `false` with probability at least $1-1/k$ if $A\times B\neq C$
+* return `false` with probability at least $1-1/K$ if $A\times B\neq C$
 
 # String Matching
 
-Suppose we have a little string $p=p_0,\ldots,p_{m-1}$ and a big body of text $t=t_0,\ldots,t_{n-1}$.  Here $m<n$ and we want to look for occurrences of $p$ in $t$.
+Suppose we have a little string $p=p_1,\ldots,p_{m}$ and a big body of text $t=t_1,\ldots,t_{n}$.  Here $m<n$ and we want to look for occurrences of $p$ in $t$.
 More precisely,
 
-* A *match* is an index $i$ such that $p_j = t_{i+j}$ for all $j\in\{0,\ldots,m-1\}$
+* A *match* is an index $i$ such that $p_j = t_{i+j-1}$ for all $j\in\{1,\ldots,m\}$
 
 We want to find the first match or all matches.  The obvious algorithm looks like this:
 
     :::pseudocode
-    for i = 0 to n-m
-        j = 0
-        while j < m and p[j] = t[i+j]
+    for i = 1 to n-m
+        j = 1
+        while j <= m and p[j] = t[i+j-1]
             j = j + 1
-        if j == m then output i
+        if j > m then output i
 
-This algorithm finds all matches and runs in $O(nm)$ time, and on some instances it runs in $\Omega(nm)$ time, even when there are no matches to output. This happens, for example, when $p=aaaa\ldots aab$ and $t=aaaa\ldots a$.
+This algorithm outputs all matches and runs in $O(nm)$ time, and on some instances it runs in $\Omega(nm)$ time, even when there are no matches to output. This happens, for example, when $p=aaaa\ldots aab$ and $t=aaaa\ldots a$.
 
 ## Kalai's algorithm
 
-Note that we can think of $p$ and $t$ as sequences of integers in the range ${0,\ldots,k-1}$ where $k$ is the alphabet size. Notice that, if we have a random vector $r\in\{1,\ldots,K\}^n$ of length $m$ then, by the Fingerprint Lemma, if $i$
+Note that we can think of $p$ and $t$ as sequences of integers in the range ${0,\ldots,k-1}$ where $k$ is the alphabet size. Notice that, if we have a random vector $r\in\{1,\ldots,K\}^m$ of length $m$ then, by the Fingerprint Lemma, if $i$
 is not a match, then
 \[ \Pr\{ r\cdot p = r\cdot (t_{i},\ldots,t_{i+m-1}) \} \le 1/K \enspace . \]
 
-We can compute $r\cdot t$ in $O(m)$ time.  Now, if we can compute $r\cdot (t_{i},\ldots,t_{i+m-1})$ for all $i\in\{1,\ldots,n-m\}$, then we have an efficient string matching algorithm.  This kind of calculation is called the *convolution* of $r$ and $t$.  It can be done in $O(n\log n)$ time using the Fast-Fourier Transform (which we may discuss later in the course.)
+We can compute $r\cdot p$ in $O(m)$ time.  Now, if we can compute $r\cdot (t_{i},\ldots,t_{i+m-1})$ for all $i\in\{1,\ldots,n-m\}$, then we have an efficient string matching algorithm.  This kind of calculation is called the *convolution* of $r$ and $t$.  That is, we want the *convolution vector*:
+\[
+    \begin{array}{rcl}r_1t_1&+\cdots+&r_mt_m\\ r_1t_2&+\cdots+&r_mt_{m+1}, \\
+    r_1t_3&+\cdots+&r_mt_{m+2},\\ \vdots &\ddots & \vdots \\
+    r_1t_{n-m}&+\cdots+&r_mt_{n-1},\\
+    r_1t_{n-m+1}&+\cdots+&r_mt_{n}\end{array}
+\]
+We can be compute this convolution vector in $O(n\log n)$ time using the Fast-Fourier Transform (which we may discuss later in the course.)
 
-This means that we have an algorithm that runs in $O(n\log n)$ time and returns a list of integers $L$ such that
+This means that we have an algorithm that runs in $O(n\log n)$ time and returns a list of integers $L$ such that:
+
 1. If $i$ is a match, then $i$ is in $L$.
 2. If $i$ is not a match, then $\Pr\{i\in L\} \le 1/K$.
 
@@ -126,14 +134,13 @@ That's already impressive, what even more impressive is that this algorithm can 
 1. If $i$ is a match, then $i$ is in $L$.
 2. If $i$ is not a match, then $\Pr\{i\in L\} \le 1/K$.
 
-Of course, if we take $K \ge m$, then we can even verify each value of $i$ $O(m)$ time and to see if it really is a match.  The expected amount of time we will spend on non-matches is only $O(n)$.  [Exercise: write this down carefully.]
+Of course, if we take $K \ge m$, then we can even verify each value of $i$ in $O(m)$ time and to see if it really is a match.  The expected amount of time we will spend on non-matches is only $O(n)$.  [Exercise: write this down carefully.]
 
 ## The Rabin-Karp Algorithm
 
 Here are my [original hand-written notes](notes/strings/) on this topic.  Here's the [algorithm implemented in C](http://cglab.ca/~morin/teaching/4804-old/notes/stringmatch.c).
 
-
-Now we can think of $p$ and $t$ as sequences of integers in the range ${0,\ldots,k-1}$ where $k$ is the alphabet size.  We can compress $p$ down to think of $p$ as a a single integer
+Now we can think of $p$ and $t$ as sequences of integers in the range ${0,\ldots,k-1}$ where $k$ is the alphabet size.  We can compress $p$ down to think of $p$ as a single integer
 \[
     I(p) = \sum_{j=0}^{m-1} k^{m-j-1}\times p_j
 \]
@@ -142,8 +149,8 @@ Just think of $p$ as a base-$k$ representation of some integer. For example if o
     :::pseudocode
     x = 1
     I = 0
-    for j = 0 to m-1
-        I += p[m-j-1]*x
+    for j = 1 to m
+        I += p[m-j]*x
         x = x*k
 
 We can restate our problem as that of trying to find the indices $i$ where
@@ -153,7 +160,7 @@ We can restate our problem as that of trying to find the indices $i$ where
 
 The nice thing about this is that we only need to compute $I(p)$ once and we have a nice relation between consecutive strings in $t$:
 \[
-   I(t_{i+1},\ldots,t_{i+m}) = kI(t_i,\ldots,t_{m-1}) - t_{i}k^m + t_{i+m}
+   I(t_{i+1},\ldots,t_{i+m}) = kI(t_i,\ldots,t_{i+m-1}) - t_{i}k^m + t_{i+m}
 \]
 
     :::pseudocode
@@ -186,11 +193,11 @@ So we have to worry about the case where $x-y$ is a multiple of $P$.  This only 
 
 Now our $x$'s and $y$'s are integers in the range $\{0,\ldots,k^m\}$, so there are only $m\log_2 k$ prime factors we have to worry about.  Now we need a result from number theory:
 
-**Theorem:** The number of primes less than $N$ is about $N/\ln N$.
+**Theorem:** (Prime Number Theorem) The number of primes less than $N$ is about $N/\ln N$.
 
-Hey, that a lot primes! We can use this:
+Hey, that a lot of primes! We can use this:
 
-**Lemma:** If $P$ is a prime number chosen uniformly at random the set of all
+**Lemma:** If $P$ is a prime number chosen uniformly at random from the set of all
  primes less than $N$ and $I(p) \neq I(t_{i},\ldots,t_{i+m-1})$ , then
  \[
      \Pr\{I(p)\bmod P = I(t_{i},\ldots,t_{i+m-1})\bmod P \} \le \frac{m\ln N\log_2 k}{N}
@@ -200,16 +207,22 @@ Hey, that a lot primes! We can use this:
 
 How big do we need $N$ to be?  If we take $N > 2Q m\log m\log k$, then the probability in the lemma becomes at most $1/Q$.  Usually, we would take $N$ to be about as big as we could comfortably fit into a machine word $N=2^{32}$ or $N=2^{64}$.  Here's the [whole thing in C](http://cglab.ca/~morin/teaching/4804/notes/stringmatch.c).
 
-# Primality Testing
+# Miller-Rabin Primality Testing
 
 If we want to test if a number $P$ is prime, we can use a bit of number theory.  Write $P-1$ as $2^s d$ for integer $s$ and odd $d$.  Now, if $P$ is prime, then for every $a\in\{1,\ldots,P-1\}$,
 
 * $a^d \equiv 1\pmod P$; or
 * $a^{2rd} \equiv -1 \pmod P$, for some $r\in\{0,\ldots,s-1\}$.
 
-On the other hand, if $P$ is not prime, then for at least half the values of $a\in\{1,\ldots,P-1\}$,
+On the other hand, if $P$ is not prime and odd, then for at least three-quarters of the values of $a\in\{1,\ldots,P-1\}$,
 
 * $a^d \not\equiv 1\pmod P$; or
 * $a^{2rd} \not\equiv -1 \pmod P$, for all $r\in\{0,\ldots,s-1\}$.
 
-So the test is easy. We pick a random $a$ and check if the first or second case holds. In the case when $P$ is not prime, we will correctly detect it with probability at least $1/2$.  If we want to be more certain, then we can repeat the experiment $k$ times and we will correctly detect composites with probability at least $1-2^{-k}$.
+So the test is easy. We pick a random $a$ and check if the first or second case holds. In the case when $P$ is not prime, we will correctly detect it with probability at least $3/4$.  If we want to be more certain, then we can repeat the experiment $k$ times and we will correctly detect composites with probability at least $1-4^{-k}$ using algorithm that requires only $O(k\log P)$ arithmetic operations modulo $P$.
+
+Now the Rabin-Karp string-matching algorithm wants a prime chosen uniformly at random from among $\{2,\ldots,N\}$.  We can get such a random prime by repeatedly choosing a random number in $\{2,\ldots,N\}$ and testing if that number is prime using the Miller-Rabin Algorithm.  The Prime Number Theorem says that we can expect to find a prime after about $\ln N$ guesses.
+
+**Theorem:** There is a randomized algorithm that does $O(k\log^2 N)$ modular artihmetic operations of integers of maximum value $N$ and that chooses a prime number uniformly at random from $\{2,\lodts,N\}$.
+
+Note that we're counting modular arithmetic operations here rather than running-time because for really big values of $N$, like those used in public-key cryptography, each arithmetic operation takes more than costant time.
