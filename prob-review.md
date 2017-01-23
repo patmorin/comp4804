@@ -63,20 +63,20 @@ Boole's Inequality is also called the *union bound*.
   This uses Property 3 of probability spaces. For countable $U$, we
   can always use $\Pr\{A\}=\sum_{x\in A} \Pr\{x\}$
 * Pick a number, $x$, uniformly at random from $\{1,\ldots,1000\}$ (so $\Pr\{i\}=1/1000$ for all $i\in\{1,\ldots,1000\}$).  What is the probabilty that $x$ is divisible by 2 or 3?  Using the notation "$a\mid x$" to mean "$x$ is divisible by $a$", we have:
-  \begin{align} \Pr\{\text{$2\mid x$ or $3\mid x$}\} &
-     = \Pr\{2\mid x\} + \Pr\{3\mid x\} - \Pr\{6\mid x\} \notag \\
-     & = \frac{500}{1000}+\frac{333}{1000}-\frac{166}{1000} \notag \\
-     & =\frac{667}{1000} \notag
-  \end{align}
+  \begin{align*} \Pr\{\text{$2\mid x$ or $3\mid x$}\} &
+     = \Pr\{2\mid x\} + \Pr\{3\mid x\} - \Pr\{6\mid x\}  \\
+     & = \frac{500}{1000}+\frac{333}{1000}-\frac{166}{1000}  \\
+     & =\frac{667}{1000} 
+  \end{align*}
   Here we used the inclusion-exclusion formula.
  * Roll two dice, what is the probability that their sum is even?
- \begin{align}
+ \begin{align*}
    \Pr\{\text{$i+j$ is even}\}  
     & = \Pr\{\text{$i$ and $j$ are both even}\}
          + \Pr\{\text{$i$ and $j$ are both odd}\} \\
     & = \frac{3\times 3}{36} + \frac{3\times 3}{36} \\
     & = \frac{1}{2}   
-  \end{align}
+  \end{align*}
   This used Property 3 again, since a number can't be both even and odd.
 * Roll two dice, what is the probability that their sum is odd?
   \[\Pr\{2\not\mid (i+j)\} = 1-\Pr\{2\mid (i+j)\} = 1-1/2 = 1/2  \]
@@ -98,21 +98,21 @@ Boole's Inequality is also called the *union bound*.
   \]
   The expected value is $3.5$.
 * Example: Sum of two dice.  Define $X(i,j)=i+j$.  then
-  \begin{align}
+  \begin{align*}
     \E[X] & =  2\times\frac{1}{36}
             +3\times\frac{2}{36}
             +4\times\frac{3}{36}
             +5\times\frac{4}{36}
             +6\times\frac{5}{36}
-            +7\times\frac{6}{36} \notag \\
+            +7\times\frac{6}{36}  \\
           &\quad{}+8\times\frac{5}{36}
             +9\times\frac{4}{36}
             +10\times\frac{3}{36}
             +11\times\frac{2}{36}
-            +12\times\frac{1}{36} \notag \\
-          & = \cdots \notag \\
-          & = 7 \notag
-  \end{align}
+            +12\times\frac{1}{36}  \\
+          & = \cdots  \\
+          & = 7 
+  \end{align*}
 
 # Linearity of Expectation
 
@@ -129,32 +129,32 @@ Define
       \end{cases}
 \]
 Then
-\begin{align}
+\begin{align*}
    \E[X_1+\cdots X_n]
-      & = \E[X_1] + \cdots \E[X_n] \notag \\
+      & = \E[X_1] + \cdots \E[X_n]  \\
       & = \Pr\{\text{first coin is heads}\}\times 1
-          + \Pr\{\text{first coin is tails}\}\times 0 +{} \notag \\
+          + \Pr\{\text{first coin is tails}\}\times 0 +{}  \\
           & \quad \cdots + \Pr\{\text{$n$th coin is heads}\}\times 1
-          + \Pr\{\text{$n$th coin is tails}\}\times 0  \notag \\
+          + \Pr\{\text{$n$th coin is tails}\}\times 0   \\
       & = \frac{1}{2}\times 1 + \frac{1}{2}\times 0 + \cdots
-          + \frac{1}{2}\times 1 + \frac{1}{2}\times 0 \notag \\
-      & = n/2 \notag
-\end{align}
+          + \frac{1}{2}\times 1 + \frac{1}{2}\times 0  \\
+      & = n/2 
+\end{align*}
 The 0/1 valued $X_i$ are called *Bernoulli* or *indicator* random variables.
 
 If you're interested in a proof of linearity of expectation, here it is:
-\begin{align}
-   \E[X+Y] & = \sum_{x}\sum_y (x+y)\Pr\{\text{$X=x$ and $Y=y$}\} \notag \\
+\begin{align*}
+   \E[X+Y] & = \sum_{x}\sum_y (x+y)\Pr\{\text{$X=x$ and $Y=y$}\}  \\
            & = \sum_{x}\sum_y x\Pr\{\text{$X=x$ and $Y=y$}\}
-             + \sum_{x}\sum_y y\Pr\{\text{$X=x$ and $Y=y$}\} \notag  \\
+             + \sum_{x}\sum_y y\Pr\{\text{$X=x$ and $Y=y$}\}   \\
            & = \sum_{x}\sum_y x\Pr\{\text{$X=x$ and $Y=y$}\}
-             + \sum_y\sum_{x} y\Pr\{\text{$X=x$ and $Y=y$}\} \notag  \\
+             + \sum_y\sum_{x} y\Pr\{\text{$X=x$ and $Y=y$}\}   \\
           & = \sum_{x}x\sum_y \Pr\{\text{$X=x$ and $Y=y$}\}
-             + \sum_y y\sum_{x} \Pr\{\text{$X=x$ and $Y=y$}\} \notag  \\
+             + \sum_y y\sum_{x} \Pr\{\text{$X=x$ and $Y=y$}\}   \\
            & = \sum_{x} x\Pr\{\text{$X=x$}\}
              + \sum_y y\Pr\{\text{$Y=y$}\} \notag  \\
           & = \E[X] + \E[Y] \notag
-\end{align}
+\end{align*}
 Not very enlightening.  The key step is where the number of summation symbols goes from 4 down to 2.  This is possible, because when we sum, over all $y$, $\Pr\{\text{$X=x$ and $Y=y$}\}$ we get $\Pr\{X=x\}$.  The Venn diagram below shows an example of this.  Here the event $X=x$ is shown as a pink circle. The different possible values of $Y$ are shown as blobs and they have to cover the pink circle because they cover all of $U$.
 <div class="centered" markdown="1">
 ![the key step in proving linear of expectation](linexp.svg)
