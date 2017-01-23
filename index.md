@@ -55,6 +55,6 @@ The notes here are created by me when preparing for class. I do appreciate it if
 * Tue Jan 10: [Closest pair and linear programming](cplp.html)
 * Thu Jan 12 and Tue Jan 17: [Fingerprinting](fingerprinting.html)
 * Thu Jan 19: [Binary space partition trees](bsp.html)
-* *Reference:* [Basic probablity worksheet](http://cglab.ca/~morin/teaching/4804-old/notes/basicprob/sheet1.pdf)
+* Reference: [Basic probablity worksheet](http://cglab.ca/~morin/teaching/4804-old/notes/basicprob/sheet1.pdf)
 * Tue Jan 24: [Conditional probability, dependence, and Markov's Inequality](independence.html)
 * Thu Jan 26: [Randomized min-cut algorithms](mincut.html)
