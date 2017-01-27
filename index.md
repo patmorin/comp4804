@@ -20,6 +20,8 @@ Thu Apr 6|Final exam (in class)
 
 # Office Hours
 
+**Notice:** Alina will have extra office hours from 10:00-12:00 on Wednesday January 25th (the day Assignment 1 is due.)
+
 |
 -------|-------
 Alina Shaikhet|Tuesday 10:00–11:30
@@ -33,7 +35,8 @@ Alina also has an extra two hours of office hours on the days assignments are du
 All assignments should be put in the assignment dropbox labelled COMP4804
 in HP 3115.
 
-* [Assignment 1](assn/assn1.pdf) is due Wednesday January 25th
+* [Assignment 1](assn/assn1.pdf) is due Wednesday January 25th. 
+* [Assignment 1 sample solutions](assn/assn1-solved.pdf).
 
 # Grading Scheme
 

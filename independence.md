@@ -130,7 +130,7 @@ A *series circuit* fails when any one of its components fail.  If each of the $k
 A *parallel circuit* fails when all of its components fail.  If each of the $k$ components fails independently with probability $p$, then what is the probability that the circuit works?
 \begin{alignstar}
   \Pr\{\text{circuit fails}\}
-     &= \Pr\{\text{$C_1$ fails and \ldots $C_k$ fails}\} \\
+     &= \Pr\{\text{$C_1$ fails and &hellip; and $C_k$ fails}\} \\
      &= p^k
 \end{alignstar}
 So the probability that the circuit works is $1-p^k$.
