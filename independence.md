@@ -81,7 +81,7 @@ By definition
 \]
 And
 \[
-   \Pr\{A\cap B\} = \Pr\{\text{$D_1=1$ and $D_2=6$}\} = 1/36 \enspace .
+   \Pr\{A\cap B\} = \Pr\{\text{$D_1=4$ and $D_2=3$}\} = 1/36 \enspace .
 \]
 So
 \[
@@ -89,7 +89,7 @@ So
 \]
 So these two events are independent.
 
-Rolling a 1 with the first die does not affect the probability that the sum of the two dice is 7.
+Rolling a 4 with the first die does not affect the probability that the sum of the two dice is 7.
 
 ## Another kind of symmetry
 
