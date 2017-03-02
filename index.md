@@ -20,8 +20,6 @@ Thu Apr 6|Final exam (in class)
 
 # Office Hours
 
-**Notice:** Alina will have extra office hours from 10:00-12:00 on Wednesday January 25th (the day Assignment 1 is due.)
-
 |
 -------|-------
 Alina Shaikhet|Tuesday 10:00–11:30
@@ -29,13 +27,16 @@ Pat Morin|Thursday 10:30–11:30 (or by appointment)
 
 Alina also has an extra two hours of office hours on the days assignments are due.
 
+**Notice:** Alina will have no office hours Tuesday February 28, but will have office hours from 10:00&ndash;13:30 on Wednesday March 1.
 
 # Assignments
 
 All assignments should be put in the assignment dropbox labelled COMP4804
 in HP 3115.
 
-* [Assignment 1](assn/assn1.pdf) is due Wednesday January 25th. 
+* [Assignment 3](assn/assn3.pdf) is due Wednesday March 22nd. 
+* [Assignment 2](assn/assn2.pdf) is due Wednesday March 1st. 
+* [Assignment 1](assn/assn1.pdf) is due Wednesday January 25th.
 * [Assignment 1 sample solutions](assn/assn1-solved.pdf).
 
 # Grading Scheme
@@ -61,3 +62,7 @@ The notes here are created by me when preparing for class. I do appreciate it if
 * Reference: [Basic probablity worksheet](http://cglab.ca/~morin/teaching/4804-old/notes/basicprob/sheet1.pdf)
 * Tue Jan 24: [Conditional probability, dependence, and Markov's Inequality](independence.html)
 * Thu Jan 26: [Randomized min-cut algorithms](mincut.html)
+* Tue Jan 31: [Chernoff's Bounds](chernoff.html)
+* Thu Feb 2: [Chernoff's bounding method](chernoff-method.html)
+* Tue Feb 7: [Growing a random spanning tree](notes/alantree.pdf)
+* Thu Feb 9: Mid-term review [study questions](notes/questions/master.pdf) (Up to Page 23), [important facts](notes/midtermsheet/midtermsheet.pdf), [sample midterm](notes/sample-midterm.pdf)
