@@ -12,11 +12,21 @@ The main topics covered in this course are:
 
 # Important Dates
 
+**Notice:** There will be no class this Thursday March 9th.  I'm away at a conference and don't have a replacement lecturer for Thursday.  However, we're not losing a lecture, since the semester has 24 lectures but because we started on a Thursday, we have 25 scheduled.
+
+Please use the time to work on Assignment 3 instead.  If you're struggling with amortized analysis, consider watching the material presented by one of the best in the business:
+
+[Erik Demaine on Amortized Analysis](https://www.youtube.com/watch?v=3MpzavN3Mco)
+
+
 |
 ---|----
 Tue Feb 14|Mid-term exam (in class)
-Thu Mar 30|Extra-long class
-Thu Apr 6|Final exam (in class)
+Thu Mar 9|No class
+Thu Mar 30|Final exam part I
+Thu Apr 6|Final exam part II
+
+
 
 # Office Hours
 
@@ -26,8 +36,6 @@ Alina Shaikhet|Tuesday 10:00–11:30
 Pat Morin|Thursday 10:30–11:30 (or by appointment)
 
 Alina also has an extra two hours of office hours on the days assignments are due.
-
-**Notice:** Alina will have no office hours Tuesday February 28, but will have office hours from 10:00&ndash;13:30 on Wednesday March 1.
 
 # Assignments
 
