@@ -12,9 +12,9 @@ The main topics covered in this course are:
 
 # Important Dates
 
-**Notice:** There will be no class this Thursday March 9th.  I'm away at a conference and don't have a replacement lecturer for Thursday.  However, we're not losing a lecture, since the semester has 24 lectures but because we started on a Thursday, we have 25 scheduled.
+**Notice:** There will be no class this Thursday March 9th.  I'm away at a conference and don't have a replacement lecturer for Thursday.  However, we're not losing a lecture. A semester is 24 lectures but, since we started on a Thursday, we have 25 scheduled.
 
-Please use the time to work on Assignment 3 instead.  If you're struggling with amortized analysis, consider watching the material presented by one of the best in the business:
+Use the time to work on Assignment 3 instead.  If you're struggling with amortized analysis, consider watching the material presented by one of the best in the business:
 
 [Erik Demaine on Amortized Analysis](https://www.youtube.com/watch?v=3MpzavN3Mco)
 
