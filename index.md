@@ -41,8 +41,8 @@ Alina also has an extra two hours of office hours on the days assignments are du
 All assignments should be put in the assignment dropbox labelled COMP4804
 in HP 3115.
 
-* [Assignment 3](assn/assn3.pdf) is due Wednesday March 22nd. 
-* [Assignment 2](assn/assn2.pdf) is due Wednesday March 1st. 
+* [Assignment 3](assn/assn3.pdf) is due Wednesday March 22nd.
+* [Assignment 2](assn/assn2.pdf) is due Wednesday March 1st.
 * [Assignment 1](assn/assn1.pdf) is due Wednesday January 25th.
 * [Assignment 1 sample solutions](assn/assn1-solved.pdf).
 
@@ -80,4 +80,5 @@ The notes here are created by me when preparing for class. I do appreciate it if
 * Tue Mar 7: Guest lecture on [Chebyshev's Inequality and median finding](notes/chebyshev.pdf)
 * Thu Mar 9: [Erik Demaine on Amortized Analysis](https://www.youtube.com/watch?v=3MpzavN3Mco)
 * Tue Mar 14: [Approximation algorithms for the travelling salesman problem](tsp-approx.html)
-
+* Thu Mar 16: [Approximation algorithms for independent sets of squares and disks](indep-approx.html)
+* Tue Mar 21: [Fixed-parameter tractable algorithms](fpt.html)
