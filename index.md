@@ -12,23 +12,22 @@ The main topics covered in this course are:
 
 # Important Dates
 
-**Notice:** There will be no class this Thursday March 9th.  I'm away at a conference and don't have a replacement lecturer for Thursday.  However, we're not losing a lecture. A semester is 24 lectures but, since we started on a Thursday, we have 25 scheduled.
 
-Use the time to work on Assignment 3 instead.  If you're struggling with amortized analysis, consider watching the material presented by one of the best in the business:
-
-[Erik Demaine on Amortized Analysis](https://www.youtube.com/watch?v=3MpzavN3Mco)
-
+*Notice/New:* Final exam Part I is on Tuesday April 4th, not the date originally posted.
 
 |
 ---|----
 Tue Feb 14|Mid-term exam (in class)
 Thu Mar 9|No class
-Thu Mar 30|Final exam part I
+Tue Apr 4|Final exam part I
 Thu Apr 6|Final exam part II
 
 
 
 # Office Hours
+
+*Notice*: Alina has extra office hours Wednesday March 22 from 10:00-12:00.
+
 
 |
 -------|-------
@@ -74,3 +73,13 @@ The notes here are created by me when preparing for class. I do appreciate it if
 * Thu Feb 2: [Chernoff's bounding method](chernoff-method.html)
 * Tue Feb 7: [Growing a random spanning tree](notes/alantree.pdf)
 * Thu Feb 9: Mid-term review [study questions](notes/questions/master.pdf) (Up to Page 23), [important facts](notes/midtermsheet/midtermsheet.pdf), [sample midterm](notes/sample-midterm.pdf)
+* Tue Feb 14: Mid-term exam
+* Thu Feb 16: Guest lecture on [graph planarity](notes/planarity.pdf)
+* Tue Feb 28: Amortized analysis using the potential method
+* Thu Mar 2: Splay trees
+* Tue Mar 7: Guest lecture on [Chebyshev's Inequality and median finding](notes/chebyshev.pdf)
+* Thu Mar 9: [Erik Demaine on Amortized Analysis](https://www.youtube.com/watch?v=3MpzavN3Mco)
+
+
+* Tue Mar 14: [Approximation algorithms for the travelling salesman problem](tsp-approx.html)
+
