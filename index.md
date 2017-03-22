@@ -79,7 +79,5 @@ The notes here are created by me when preparing for class. I do appreciate it if
 * Thu Mar 2: Splay trees
 * Tue Mar 7: Guest lecture on [Chebyshev's Inequality and median finding](notes/chebyshev.pdf)
 * Thu Mar 9: [Erik Demaine on Amortized Analysis](https://www.youtube.com/watch?v=3MpzavN3Mco)
-
-
 * Tue Mar 14: [Approximation algorithms for the travelling salesman problem](tsp-approx.html)
 
